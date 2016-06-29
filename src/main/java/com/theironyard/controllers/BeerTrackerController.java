@@ -5,6 +5,7 @@ import com.theironyard.entities.Beer;
 import com.theironyard.entities.User;
 import com.theironyard.services.BeerRepository;
 import com.theironyard.services.UserRepository;
+import org.h2.tools.Server;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,7 @@ import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.sql.SQLException;
 
 /**
  * Created by zach on 11/10/15.
@@ -28,7 +30,8 @@ public class BeerTrackerController {
     UserRepository users;
 
     @PostConstruct
-    public void init() throws InvalidKeySpecException, NoSuchAlgorithmException, PasswordStorage.CannotPerformOperationException {
+    public void init() throws InvalidKeySpecException, NoSuchAlgorithmException, PasswordStorage.CannotPerformOperationException, SQLException {
+        Server.createWebServer().start();
 
         User user = users.findOneByName("Zach");
         if (user == null) {

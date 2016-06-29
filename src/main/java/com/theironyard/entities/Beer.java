@@ -21,6 +21,70 @@ public class Beer {
     @Column(nullable = false)
     public Integer calories;
 
-    @OneToMany
+    @ManyToOne
     public User user;
+
+    public Beer() {
+    }
+
+    public Beer(Integer id, String name, String type, Integer calories) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.calories = calories;
+    }
+
+    public Beer(String name, String type, Integer calories, User user) {
+        this.name = name;
+        this.type = type;
+        this.calories = calories;
+        this.user = user;
+    }
+
+    public Beer(String name, String type, Integer calories) {
+        this.name = name;
+        this.type = type;
+        this.calories = calories;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Integer getCalories() {
+        return calories;
+    }
+
+    public void setCalories(Integer calories) {
+        this.calories = calories;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
+

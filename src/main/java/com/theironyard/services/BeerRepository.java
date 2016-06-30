@@ -1,6 +1,5 @@
 package com.theironyard.services;
 
-import com.sun.tools.javac.util.List;
 import com.theironyard.entities.Beer;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -20,4 +19,5 @@ public interface BeerRepository extends CrudRepository<Beer, Integer> {
 
     @Query("SELECT b FROM Beer b WHERE LOWER(name) LIKE '%' || LOWER(?) || '%'")
     Iterable<Beer> searchByName(String name);
+    //like operator usage;
 }
